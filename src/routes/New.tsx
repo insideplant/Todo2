@@ -1,9 +1,13 @@
+import { Container } from "@mui/material";
+
 export default function New() {
     return (
       <>
-        <div>
+        <Container>
+          <div>
             New
-        </div>
+          </div>
+        </Container>
       </>
     );
   }

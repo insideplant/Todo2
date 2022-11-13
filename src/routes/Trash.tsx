@@ -1,9 +1,13 @@
+import { Container } from "@mui/material";
+
 export default function Trash() {
     return (
       <>
-        <div>
-            Trash
-        </div>
+        <Container>
+          <div>
+          Trash
+          </div>
+        </Container>
       </>
     );
   }
