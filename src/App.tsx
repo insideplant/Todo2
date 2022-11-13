@@ -1,23 +1,27 @@
-import React from 'react';
-import './App.css';
+import {RouterProvider} from "react-router-dom";
+import Bar from "./components/Bar";
+import useRouter from './useRouter';
+import { styled } from '@mui/material/styles';
+
+const Main = styled("main")(({ theme }) => ({
+  backgroundColor: 'aliceblue',
+  padding: theme.spacing(8,0,6)
+}));
 
 function App() {
+
+  // routerの設定
+  const routes = useRouter();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+      <header>      
+        <Bar/>
       </header>
-    </div>
+      <Main>
+        <RouterProvider router={routes} />
+      </Main>
+    </>
   );
 }
 
