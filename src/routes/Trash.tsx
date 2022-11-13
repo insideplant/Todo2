@@ -3,7 +3,7 @@ import { Container } from "@mui/material";
 export default function Trash() {
     return (
       <>
-        <Container>
+        <Container maxWidth="md">
           <div>
           Trash
           </div>

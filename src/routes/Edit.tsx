@@ -3,7 +3,7 @@ import { Container } from "@mui/material";
 export default function Edit() {
     return (
       <>
-        <Container>
+        <Container maxWidth="md">
           <div>
             Edit
           </div>
