@@ -1,12 +1,10 @@
-import { Container } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 
 export default function New() {
     return (
       <>
         <Container maxWidth="md">
-          <div>
-            New
-          </div>
+          <Typography variant="h3" gutterBottom> TODO </Typography>
         </Container>
       </>
     );
