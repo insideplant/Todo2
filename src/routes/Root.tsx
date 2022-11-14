@@ -2,6 +2,11 @@ import { Container } from "@mui/material";
 import BookTable from "../BookTable";
 import { getAllBooks } from "../fetch/ApiFetch";
 import { useState,useEffect } from "react";
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import { Typography } from '@mui/material';
 
 export default function Root() {
   
@@ -14,7 +19,6 @@ export default function Root() {
 
   const [books, setBooks] = useState<Book[]>([])
 
-
   useEffect(() => {
     console.log("test");
     return () => {
@@ -22,15 +26,13 @@ export default function Root() {
         setBooks(books);
       });
     }
-  })
+  },[])
 
 
     return (
       <>
-        <Container maxWidth="md">
-          <div>
-            TODO List
-          </div>
+        <Container maxWidth="md">          
+          <Typography variant="h3" gutterBottom> TODO </Typography>
           <BookTable books = {books} />
         </Container>
       </>
