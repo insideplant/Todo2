@@ -20,6 +20,9 @@ export async function getAllTodos():Promise<Todo[]> {
 
 // 更新
 export async function adTodo(id:number, status:String):Promise<Todo[]> {
-	const response = await fetch(`/TodoManage/setStatus?id=${id}&status=${status}`)
+	console.log(status)
+	const url = `/TodoManage/setStatus`;
+	const params = {method: "PUT", body: JSON.stringify({id: id + 1, status: status})}
+	const response = await fetch(url,params)
 	return await response.json()
 }

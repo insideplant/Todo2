@@ -11,16 +11,15 @@ type Todo = {
 };
 
 type Props = {
-    todos: Todo[]
-    setTodos: React.Dispatch<React.SetStateAction<Todo[]>>
-    handleClick: any
+    todos: Todo[],
+    handleClick: (id: number, status: String) => void
 }
 
 type Status = "NOT STARTED" | "DOING" | "DONE"
 
 
 export default function TodoTable(props:Props): JSX.Element{
-    const {todos, setTodos,handleClick} = props;
+    const {todos,handleClick} = props;
 
 
 
