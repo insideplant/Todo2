@@ -25,15 +25,16 @@ export default function Root() {
 
   useEffect(() => {
     return () => {
-      getAllTodos().then(todos => {
+      getAllTodos().then((todos:Todo[]):void=> {
+        console.log(todos);
         setTodos(todos);
       });
     }
   },[])
 
-  function handleClick(id :number,status:String){
-    // adTodo(id,status)
-    console.log(id)
+  function handleClick(id :number,status:String): void{
+    const test = adTodo(id,status)
+    console.log(test)
     if(status === "DOING"){
       status = "DONE"
     } else if(status === "DONE"){
@@ -50,7 +51,7 @@ export default function Root() {
       <>
         <Container maxWidth="md">          
           <Typography variant="h3" gutterBottom> TODO </Typography>
-          <TodoTable todos = {todos} setTodos={setTodos} handleClick={handleClick} />
+          <TodoTable todos = {todos} handleClick={handleClick} />
         </Container>
       </>
     );
