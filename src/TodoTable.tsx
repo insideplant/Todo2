@@ -1,25 +1,28 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
 import StatusButon from './components/StatusButon';
+import PriorityButton from './components/PriorityButon';
 
 type Todo = {
 	id: number;
 	task: String;
 	status: Status;
-	priority:  String;
+	priority:  Priority;
 	created_at:  String;
 	updated_at:  String;
 };
 
 type Props = {
     todos: Todo[],
-    handleClick: (id: number, status: String) => void
+    setTodos: React.Dispatch<React.SetStateAction<Todo[]>>,
+    handlePriorityClick: (id: number, status: String) => void
 }
 
 type Status = "NOT STARTED" | "DOING" | "DONE"
+type Priority = "HIGH" | "MIDDLE" | "LOW"
 
 
 export default function TodoTable(props:Props): JSX.Element{
-    const {todos,handleClick} = props;
+    const {todos,setTodos,handlePriorityClick} = props;
 
 
 
@@ -28,12 +31,12 @@ export default function TodoTable(props:Props): JSX.Element{
         <Table sx={{ maxWidth: 800 }} aria-label="simple table">
             <TableHead>
             <TableRow>
-                <TableCell align="right">Task</TableCell>
-                <TableCell align="right">Status</TableCell>
-                <TableCell align="right">Priority</TableCell>
-                <TableCell align="right">Create</TableCell>
-                <TableCell align="right">Update</TableCell>
-                <TableCell align="right">Action</TableCell>
+                <TableCell align="left">Task</TableCell>
+                <TableCell align="left">Status</TableCell>
+                <TableCell align="left">Priority</TableCell>
+                <TableCell align="left">Create</TableCell>
+                <TableCell align="left">Update</TableCell>
+                <TableCell align="left">Action</TableCell>
             </TableRow>
             </TableHead>
             <TableBody>
@@ -42,12 +45,12 @@ export default function TodoTable(props:Props): JSX.Element{
                 key={todo.id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
-                <TableCell align="right">{todo.task}</TableCell>
-                <TableCell align="right"><StatusButon status= {todo.status}  handleClick={handleClick} todo={todo} /></TableCell>
-                <TableCell align="right">{todo.priority}</TableCell>
-                <TableCell align="right">{todo.created_at}</TableCell>
-                <TableCell align="right">{todo.updated_at}</TableCell>
-                <TableCell align="right">TEST</TableCell>
+                <TableCell align="left">{todo.task}</TableCell>
+                <TableCell align="left"><StatusButon status= {todo.status} setTodos={setTodos} todo={todo} todos={todos} /></TableCell>
+                <TableCell align="left"><PriorityButton priority= {todo.priority}  handlePriorityClick={handlePriorityClick} todo={todo} /></TableCell>
+                <TableCell align="left">{todo.created_at}</TableCell>
+                <TableCell align="left">{todo.updated_at}</TableCell>
+                <TableCell align="left">TEST</TableCell>
 
                 </TableRow>
             ))}

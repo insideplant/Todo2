@@ -1,6 +1,6 @@
 import { Container } from "@mui/material";
 import TodoTable from "../TodoTable";
-import { adTodo, getAllTodos } from "../fetch/ApiFetch";
+import { changePriority,changeStatus, getAllTodos } from "../fetch/ApiFetch";
 import { useState,useEffect } from "react";
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -14,12 +14,13 @@ export default function Root() {
     id: number;
     task: String;
     status: Status;
-    priority:  String;
+    priority:  Priority;
     created_at:  String;
     updated_at:  String;
   };
 
   type Status = "NOT STARTED" | "DOING" | "DONE"
+  type Priority = "HIGH" | "MIDDLE" | "LOW"
 
   const [todos, setTodos] = useState<Todo[]>([])
 
@@ -32,26 +33,29 @@ export default function Root() {
     }
   },[])
 
-  function handleClick(id :number,status:String): void{
-    const test = adTodo(id,status)
+
+
+  function handlePriorityClick(id :number,priority:String): void{
+    const test = changePriority(id,priority)
     console.log(test)
-    if(status === "DOING"){
-      status = "DONE"
-    } else if(status === "DONE"){
-      status = "NOT STARTED"
-    } else if(status === "NOT STARTED"){
-      status = "DOING"
+    if(priority === "HIGH"){
+      priority = "MIDDLE"
+    } else if(priority === "MIDDLE"){
+      priority = "LOW"
+    } else if(priority === "LOW"){
+      priority = "HIGH"
     }
+
     setTodos(
-      todos.map((todo,index)=> (index === id ? Object.assign(todo,{status: status}): todo))
-    );
+      todos.map((todo,index)=> (index === id ? Object.assign(todo,{priority: priority}): todo))
+      );
   }
 
     return (
       <>
         <Container maxWidth="md">          
           <Typography variant="h3" gutterBottom> TODO </Typography>
-          <TodoTable todos = {todos} handleClick={handleClick} />
+          <TodoTable todos = {todos} setTodos={setTodos} handlePriorityClick={handlePriorityClick}/>
         </Container>
       </>
     );
