@@ -16,9 +16,6 @@ export async function getAllTodos():Promise<Todo[]> {
 	return await response.json()
 }
 
-// 検索
-
-
 // 更新
 export async function changeStatus(id:number, status:String):Promise<Todo[]> {
 	console.log(status)
@@ -29,10 +26,10 @@ export async function changeStatus(id:number, status:String):Promise<Todo[]> {
 }
 
 // priority更新
-export async function changePriority(id:number, status:String):Promise<Todo[]> {
-	console.log(status)
+export async function changePriority(id:number, priority:String):Promise<Todo[]> {
+	console.log(priority)
 	const url = `/TodoManage/setPriority`;
-	const params = {method: "PUT", body: JSON.stringify({id: id + 1, status: status})}
+	const params = {method: "PUT", body: JSON.stringify({id: id + 1, priority: priority})}
 	const response = await fetch(url,params)
 	return await response.json()
 }

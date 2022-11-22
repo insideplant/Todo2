@@ -13,18 +13,14 @@ type Todo = {
 
 type Props = {
     todos: Todo[],
-    setTodos: React.Dispatch<React.SetStateAction<Todo[]>>,
-    handlePriorityClick: (id: number, status: String) => void
+    setTodos: React.Dispatch<React.SetStateAction<Todo[]>>
 }
 
 type Status = "NOT STARTED" | "DOING" | "DONE"
 type Priority = "HIGH" | "MIDDLE" | "LOW"
 
-
 export default function TodoTable(props:Props): JSX.Element{
-    const {todos,setTodos,handlePriorityClick} = props;
-
-
+    const {todos,setTodos} = props;
 
   return (
     <TableContainer component={Paper}>
@@ -47,7 +43,7 @@ export default function TodoTable(props:Props): JSX.Element{
                 >
                 <TableCell align="left">{todo.task}</TableCell>
                 <TableCell align="left"><StatusButon status= {todo.status} setTodos={setTodos} todo={todo} todos={todos} /></TableCell>
-                <TableCell align="left"><PriorityButton priority= {todo.priority}  handlePriorityClick={handlePriorityClick} todo={todo} /></TableCell>
+                <TableCell align="left"><PriorityButton priority= {todo.priority} setTodos={setTodos} todo={todo} todos={todos} /></TableCell>
                 <TableCell align="left">{todo.created_at}</TableCell>
                 <TableCell align="left">{todo.updated_at}</TableCell>
                 <TableCell align="left">TEST</TableCell>

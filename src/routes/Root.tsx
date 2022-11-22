@@ -33,30 +33,12 @@ export default function Root() {
     }
   },[])
 
-
-
-  function handlePriorityClick(id :number,priority:String): void{
-    const test = changePriority(id,priority)
-    console.log(test)
-    if(priority === "HIGH"){
-      priority = "MIDDLE"
-    } else if(priority === "MIDDLE"){
-      priority = "LOW"
-    } else if(priority === "LOW"){
-      priority = "HIGH"
-    }
-
-    setTodos(
-      todos.map((todo,index)=> (index === id ? Object.assign(todo,{priority: priority}): todo))
-      );
-  }
-
-    return (
-      <>
-        <Container maxWidth="md">          
-          <Typography variant="h3" gutterBottom> TODO </Typography>
-          <TodoTable todos = {todos} setTodos={setTodos} handlePriorityClick={handlePriorityClick}/>
-        </Container>
-      </>
-    );
-  }
+  return (
+    <>
+      <Container maxWidth="md">          
+        <Typography variant="h3" gutterBottom> TODO </Typography>
+        <TodoTable todos = {todos} setTodos={setTodos} />
+      </Container>
+    </>
+  );
+}
