@@ -1,4 +1,4 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
 import StatusButon from './components/StatusButon';
 import PriorityButton from './components/PriorityButon';
 
@@ -24,16 +24,20 @@ export default function TodoTable(props:Props): JSX.Element{
 
   return (
     <TableContainer component={Paper}>
-        <Table sx={{ maxWidth: 800 }} aria-label="simple table">
+        <Table sx={{ maxWidth: 800 }} aria-label="simple table"
+            stickyHeader
+            style={{
+            tableLayout: "fixed",
+            }}>
             <TableHead>
-            <TableRow>
-                <TableCell align="left">Task</TableCell>
-                <TableCell align="left">Status</TableCell>
-                <TableCell align="left">Priority</TableCell>
-                <TableCell align="left">Create</TableCell>
-                <TableCell align="left">Update</TableCell>
-                <TableCell align="left">Action</TableCell>
-            </TableRow>
+                <TableRow>
+                    <TableCell align="left" sx={{width: 150 }}>Task</TableCell>
+                    <TableCell align="left" sx={{width: 100 }}>Status</TableCell>
+                    <TableCell align="left" sx={{width: 100 }}>Priority</TableCell>
+                    <TableCell align="left" sx={{width: 150 }}>Create</TableCell>
+                    <TableCell align="left" sx={{width: 150 }}>Update</TableCell>
+                    <TableCell align="left" sx={{width: 150 }}>Action</TableCell>
+                </TableRow>
             </TableHead>
             <TableBody>
             {todos.map((todo) => (
@@ -41,13 +45,12 @@ export default function TodoTable(props:Props): JSX.Element{
                 key={todo.id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
-                <TableCell align="left">{todo.task}</TableCell>
-                <TableCell align="left"><StatusButon status= {todo.status} setTodos={setTodos} todo={todo} todos={todos} /></TableCell>
-                <TableCell align="left"><PriorityButton priority= {todo.priority} setTodos={setTodos} todo={todo} todos={todos} /></TableCell>
-                <TableCell align="left">{todo.created_at}</TableCell>
-                <TableCell align="left">{todo.updated_at}</TableCell>
-                <TableCell align="left">TEST</TableCell>
-
+                    <TableCell align="left" sx={{overflow: "hidden",textOverflow: "ellipsis",whiteSpace: "nowrap" }}>{todo.task}</TableCell>
+                    <TableCell align="left" ><StatusButon status= {todo.status} setTodos={setTodos} todo={todo} todos={todos} /></TableCell>
+                    <TableCell align="left"><PriorityButton priority= {todo.priority} setTodos={setTodos} todo={todo} todos={todos} /></TableCell>
+                    <TableCell align="left">{todo.created_at}</TableCell>
+                    <TableCell align="left">{todo.updated_at}</TableCell>
+                    <TableCell align="left">TEST</TableCell>
                 </TableRow>
             ))}
             </TableBody>

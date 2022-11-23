@@ -1,9 +1,6 @@
 import { Box,AppBar,Toolbar,IconButton,Typography,Button } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
 
-
-import React from 'react'
-
 export default function Bar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
