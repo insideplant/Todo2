@@ -16,7 +16,7 @@ export async function getAllTodos():Promise<Todo[]> {
 	return await response.json()
 }
 
-// 更新
+// status更新
 export async function changeStatus(id:number, status:String):Promise<Todo[]> {
 	console.log(status)
 	const url = `/TodoManage/setStatus`;
@@ -34,4 +34,10 @@ export async function changePriority(id:number, priority:String):Promise<Todo[]>
 	return await response.json()
 }
 
-
+// CREATE TODO
+export async function createTodo(todo:Todo):Promise<Todo[]> {
+	const url = `/TodoManage/create`;
+	const params = {method: "POST", body: JSON.stringify(todo)}
+	const response = await fetch(url,params)
+	return await response.json()
+}
