@@ -1,6 +1,6 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
-import StatusButon from './components/StatusButon';
-import PriorityButton from './components/PriorityButon';
+import StatusButon from './StatusButon';
+import PriorityButton from './PriorityButon';
 
 type Todo = {
 	id: number;
@@ -21,6 +21,8 @@ type Priority = "HIGH" | "MIDDLE" | "LOW"
 
 export default function TodoTable(props:Props): JSX.Element{
     const {todos,setTodos} = props;
+
+    console.log(todos);
 
   return (
     <TableContainer component={Paper}>

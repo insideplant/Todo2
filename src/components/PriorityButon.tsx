@@ -47,7 +47,7 @@ export default function PriorityButton(props: Props) {
     }
   }, [handlePriorityClick])
 
-  function handlePriorityClick(id :number,priority:String): void{
+  function handlePriorityClick(id :number,priority:Priority): void{
     const test = changePriority(id,priority)
     if(priority === "HIGH"){
       priority = "MIDDLE";

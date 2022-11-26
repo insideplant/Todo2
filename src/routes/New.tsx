@@ -1,43 +1,43 @@
 import { Button, Container, FormControl, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, TextField, Typography } from "@mui/material";
 import { useState } from "react";
+import { createTodo } from "../fetch/ApiFetch";
 
 export default function New() {
 
-  type Todo = {
-    id: number | null;
+  type NewTodo = {
     task: String;
     detail: String;
     status: String;
     priority:  String;
     created_at:  String | null;
-    updated_at:  String | null;
   };
     
   type Status = "NOT STARTED" | "DOING" | "DONE"
   type Priority = "HIGH" | "MIDDLE" | "LOW"
-  const [todo,setTodo] = useState<Todo>(
+  const [todo,setTodo] = useState<NewTodo>(
     {
-      id: null,
       task: '',
       detail: '',
       status: 'NOT STARTED',
       priority:  'HIGH',
-      created_at:  null,
-      updated_at:  null
+      created_at:  null
     }
   );
 
   function handleTaskChange(e: React.ChangeEvent<HTMLInputElement>) {
     setTodo({...todo, task: e.target.value})
   }
-  const handleDetailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  function handleDetailChange(e: React.ChangeEvent<HTMLInputElement>){
     setTodo({...todo, detail: e.target.value})
   }
-  const handleStatusSet = (e: React.ChangeEvent<HTMLInputElement>) => {
+  function handleStatusSet(e: React.ChangeEvent<HTMLInputElement>){
     setTodo({...todo, status: e.target.value})
   }
-  const handlePrioritySet = (e: React.ChangeEvent<HTMLInputElement>) => {
+  function handlePrioritySet(e: React.ChangeEvent<HTMLInputElement>){
     setTodo({...todo, priority: e.target.value})
+  }
+  function handleCreate(){
+    createTodo(todo);
   }
 
   return (
@@ -107,7 +107,7 @@ export default function New() {
                   </Grid>
                 </Grid>
                 <Grid item xs={12}>
-                  <Button fullWidth size='large' variant="contained">
+                  <Button fullWidth size='large' variant="contained" onClick={handleCreate}>
                     Create
                   </Button>
                 </Grid>

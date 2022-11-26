@@ -1,5 +1,5 @@
 import { Container } from "@mui/material";
-import TodoTable from "../TodoTable";
+import TodoTable from "../components/TodoTable";
 import { changePriority,changeStatus, getAllTodos } from "../fetch/ApiFetch";
 import { useState,useEffect } from "react";
 import '@fontsource/roboto/300.css';

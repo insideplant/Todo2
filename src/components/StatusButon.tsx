@@ -50,7 +50,7 @@ export default function StatusButon(props: Props) {
     }
   }, [])
 
-  function handleClick(id :number,status:String): void{
+  function handleClick(id :number,status:Status): void{    
     const test = changeStatus(id,status)
     if(status === "DOING"){
       status = "DONE";
