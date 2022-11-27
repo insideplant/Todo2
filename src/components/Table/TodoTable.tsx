@@ -1,6 +1,7 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
-import StatusButon from './Button/StatusButon';
-import PriorityButton from './Button/PriorityButon';
+import StatusButon from '../Button/StatusButon';
+import PriorityButton from '../Button/PriorityButon';
+import TableRowBtns from '../TableRowBtns';
 
 type Todo = {
 	id: number;
@@ -9,6 +10,7 @@ type Todo = {
 	priority:  Priority;
 	created_at:  String;
 	updated_at:  String;
+    flag: number;
 };
 
 type Props = {
@@ -22,8 +24,14 @@ type Priority = "HIGH" | "MIDDLE" | "LOW"
 export default function TodoTable(props:Props): JSX.Element{
     const {todos,setTodos} = props;
 
-    console.log(todos);
 
+    const tblrow = todos.reduce((result:Todo[], currentValue:Todo) => {
+        if(currentValue.flag == 0){
+            result.push(currentValue);
+        }
+        return result
+    },[])
+    
   return (
     <TableContainer component={Paper}>
         <Table sx={{ maxWidth: 800 }} aria-label="simple table"
@@ -42,7 +50,8 @@ export default function TodoTable(props:Props): JSX.Element{
                 </TableRow>
             </TableHead>
             <TableBody>
-            {todos.map((todo) => (
+            {tblrow.map((todo) => (
+                // if(todo.flag == 1){
                 <TableRow
                 key={todo.id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -52,8 +61,9 @@ export default function TodoTable(props:Props): JSX.Element{
                     <TableCell align="left"><PriorityButton priority= {todo.priority} setTodos={setTodos} todo={todo} todos={todos} /></TableCell>
                     <TableCell align="left">{todo.created_at}</TableCell>
                     <TableCell align="left">{todo.updated_at}</TableCell>
-                    <TableCell align="left">TEST</TableCell>
+                    <TableCell align="left"><TableRowBtns setTodos={setTodos} todo={todo} todos={todos}/></TableCell>
                 </TableRow>
+                // }
             ))}
             </TableBody>
         </Table>

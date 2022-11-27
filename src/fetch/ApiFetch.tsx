@@ -5,6 +5,7 @@ type Todo = {
 	priority:  Priority;
 	created_at:  String;
 	updated_at:  String;
+	flag: number;
 };
 
 type NewTodo = {
@@ -26,8 +27,6 @@ export async function getAllTodos():Promise<Todo[]> {
 
 // status更新
 export async function changeStatus(id:number, status:Status):Promise<Todo[]> {
-	console.log(status)
-	console.log(id);
 	const url = `/TodoManage/setStatus`;
 	const params = {method: "PUT", body: JSON.stringify({id: id + 1, status: status})}
 	const response = await fetch(url,params)
@@ -39,6 +38,15 @@ export async function changePriority(id:number, priority:Priority):Promise<Todo[
 	console.log(priority)
 	const url = `/TodoManage/setPriority`;
 	const params = {method: "PUT", body: JSON.stringify({id: id + 1, priority: priority})}
+	const response = await fetch(url,params)
+	return await response.json()
+}
+
+// flag更新
+export async function changeFlag(id:number, flag:number):Promise<Todo[]> {
+	console.log(flag)
+	const url = `/TodoManage/setFlag`;
+	const params = {method: "PUT", body: JSON.stringify({id: id + 1, flag: flag})}
 	const response = await fetch(url,params)
 	return await response.json()
 }

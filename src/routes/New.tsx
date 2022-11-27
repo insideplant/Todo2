@@ -1,5 +1,6 @@
 import { Button, Container, FormControl, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, TextField, Typography } from "@mui/material";
 import { useState } from "react";
+import TopLinkBtns from "../components/TopLinkBtns";
 import { createTodo } from "../fetch/ApiFetch";
 
 export default function New() {
@@ -43,7 +44,14 @@ export default function New() {
   return (
     <>
       <Container maxWidth="md">
-        <Typography variant="h3" gutterBottom> TODO </Typography>
+        <Grid container>
+          <Grid item xs={9}>
+            <Typography variant="h3" gutterBottom> New </Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <TopLinkBtns pageTitle="New" />            
+          </Grid>
+        </Grid>
         <Grid container spacing={4}>
           <Grid item xs={6}>
             <TextField 

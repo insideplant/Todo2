@@ -21,6 +21,7 @@ type Todo = {
 	priority:  Priority;
 	created_at:  String;
 	updated_at:  String;
+  flag: number;
 };
 
 type Props = {
