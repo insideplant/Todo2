@@ -1,6 +1,6 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
-import StatusButon from './StatusButon';
-import PriorityButton from './PriorityButon';
+import StatusButon from './Button/StatusButon';
+import PriorityButton from './Button/PriorityButon';
 
 type Todo = {
 	id: number;

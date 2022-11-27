@@ -1,12 +1,13 @@
-import { Container } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import TodoTable from "../components/TodoTable";
-import { changePriority,changeStatus, getAllTodos } from "../fetch/ApiFetch";
+import { getAllTodos } from "../fetch/ApiFetch";
 import { useState,useEffect } from "react";
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { Typography } from '@mui/material';
+import LinkBox from "../components/TopLinkBox";
 
 export default function Root() {
   
@@ -35,8 +36,15 @@ export default function Root() {
 
   return (
     <>
-      <Container maxWidth="md">          
-        <Typography variant="h3" gutterBottom> TODO </Typography>
+      <Container maxWidth="md">
+        <Grid container>
+          <Grid item xs={9}>
+            <Typography variant="h3" gutterBottom> TODO </Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <LinkBox/>            
+          </Grid>
+        </Grid>
         <TodoTable todos = {todos} setTodos={setTodos} />
       </Container>
     </>
