@@ -1,5 +1,6 @@
-import { Box,AppBar,Toolbar,IconButton,Typography,Button } from '@mui/material'
+import { Box,AppBar,Toolbar,IconButton,Typography,Button} from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
+
 
 export default function Bar() {
   return (
@@ -15,9 +16,18 @@ export default function Bar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            TODO
-          </Typography>
+            <Typography 
+              variant="h6" 
+              component="a"
+              href="/" 
+              sx={{ 
+                flexGrow: 1 ,
+                color: 'inherit',
+                textDecoration: 'none'
+              }}
+            >            
+              TODO
+            </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>

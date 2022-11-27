@@ -1,4 +1,5 @@
 import Button from '@mui/material/Button';
+import { FlagAndOpenMode } from 'fs/promises';
 import { useState,useEffect } from 'react';
 import { changePriority } from "../../fetch/ApiFetch";
 
@@ -21,6 +22,7 @@ type Todo = {
 	priority:  Priority;
 	created_at:  String;
 	updated_at:  String;
+  flag: number;
 };
 
 type Props = {
