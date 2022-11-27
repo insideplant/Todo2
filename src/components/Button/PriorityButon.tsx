@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 import { useState,useEffect } from 'react';
-import { changePriority } from "../fetch/ApiFetch";
+import { changePriority } from "../../fetch/ApiFetch";
 
 const PRIORITY = {
   high: "HIGH",

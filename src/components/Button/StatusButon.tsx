@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 import { useState,useEffect } from 'react';
-import { changeStatus } from "../fetch/ApiFetch";
+import { changeStatus } from "../../fetch/ApiFetch";
 
 const STATUS = {
   not_started: "NOT STARTED",
