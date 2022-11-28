@@ -15,7 +15,7 @@ export default function TopLinkBtns(props: Props) {
     <Box sx={{ display: 'flex',justifyContent: 'space-evenly' }}>
         <Link to={`/new_todo`}>
           <IconButton>
-                  <AddBoxIcon color={pageTitle=='New'? "primary":"inherit"}></AddBoxIcon>
+              <AddBoxIcon color={pageTitle=='New'? "primary":"inherit"}></AddBoxIcon>
           </IconButton>
         </Link>
         <Link to={`/trash`}>

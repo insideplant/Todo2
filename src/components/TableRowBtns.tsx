@@ -41,7 +41,7 @@ export default function TableRowBtns(props: Props) {
     <Box sx={{ display: 'flex',justifyContent: 'space-evenly' }}>
         <Link to={`/edit_todo`}>
           <IconButton>
-            <AddBoxIcon color="primary"></AddBoxIcon>
+            <EditIcon ></EditIcon>
           </IconButton>
         </Link>
         <IconButton onClick={() => handleClick(todo.id -1,todo.flag)}>
