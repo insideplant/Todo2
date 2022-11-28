@@ -46,7 +46,7 @@ export default function TodoTable(props:Props): JSX.Element{
                     <TableCell align="left" sx={{width: 100 }}>Priority</TableCell>
                     <TableCell align="left" sx={{width: 150 }}>Create</TableCell>
                     <TableCell align="left" sx={{width: 150 }}>Update</TableCell>
-                    <TableCell align="left" sx={{width: 150 }}>Action</TableCell>
+                    <TableCell align="center" sx={{width: 150 }}>Action</TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
@@ -61,7 +61,7 @@ export default function TodoTable(props:Props): JSX.Element{
                     <TableCell align="left"><PriorityButton priority= {todo.priority} setTodos={setTodos} todo={todo} todos={todos} /></TableCell>
                     <TableCell align="left">{todo.created_at}</TableCell>
                     <TableCell align="left">{todo.updated_at}</TableCell>
-                    <TableCell align="left"><TableRowBtns setTodos={setTodos} todo={todo} todos={todos}/></TableCell>
+                    <TableCell align="center"><TableRowBtns setTodos={setTodos} todo={todo} todos={todos}/></TableCell>
                 </TableRow>
                 // }
             ))}
