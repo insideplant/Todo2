@@ -26,6 +26,11 @@ export default function useRouter() {
         {
           path: "edit_todo",
           element: <Edit />,
+          children: [
+            {
+              path: ":editId",
+            },
+          ],
         },
         {
           path: "trash",

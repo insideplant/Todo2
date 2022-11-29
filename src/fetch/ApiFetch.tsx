@@ -1,6 +1,9 @@
+import { Params } from "react-router-dom";
+
 type Todo = {
 	id: number;
 	task: String;
+	detail: String;
 	status: Status;
 	priority:  Priority;
 	created_at:  String;
@@ -22,6 +25,12 @@ type Priority = "HIGH" | "MIDDLE" | "LOW"
 // 全件取得
 export async function getAllTodos():Promise<Todo[]> {
 	const response = await fetch('/TodoManage')
+	return await response.json()
+}
+// 1件取得
+export async function getTodo(id: string | undefined):Promise<Todo> {
+	console.log(id);
+	const response = await fetch(`/TodoManage/Search/?id=${id}`)
 	return await response.json()
 }
 

@@ -38,12 +38,12 @@ export default function TableRowBtns(props: Props) {
   }
 
   return (
-    <Box sx={{ display: 'flex',justifyContent: 'space-evenly' }}>
-        <Link to={`/edit_todo`}>
+    <Box sx={{ display: 'flex',justifyContent: 'space-evenly' }}>        
+        <Link to={`edit_todo/${todo.id}`}>
           <IconButton>
-            <EditIcon ></EditIcon>
+              <EditIcon ></EditIcon>
           </IconButton>
-        </Link>
+        </Link>        
         <IconButton onClick={() => handleClick(todo.id -1,todo.flag)}>
             <DeleteIcon></DeleteIcon>
         </IconButton>        
