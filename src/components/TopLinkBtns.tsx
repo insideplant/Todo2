@@ -1,8 +1,9 @@
 import DeleteIconFilled from '@mui/icons-material/Delete';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import EditIcon from '@mui/icons-material/Edit';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Box, IconButton } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 type Props = {
   pageTitle: 'New' | 'Trash' | 'Edit' | 'Root';
@@ -10,6 +11,7 @@ type Props = {
 
 export default function TopLinkBtns(props: Props) {
   const {pageTitle} = props;
+  const navigate = useNavigate();
 
   return (
     <Box sx={{ display: 'flex',justifyContent: 'space-evenly' }}>
@@ -22,12 +24,10 @@ export default function TopLinkBtns(props: Props) {
           <IconButton>
               <DeleteIconFilled color={pageTitle=='Trash'? "primary":"inherit"} ></DeleteIconFilled>
           </IconButton>
-        </Link>
-        <Link to={`/draft_todo`}>
-          <IconButton>
-              <EditIcon color={pageTitle=='Edit'? "primary":"inherit"}/>
-          </IconButton>
-        </Link>
+        </Link>        
+        <IconButton disabled={pageTitle=='Root'? true:false}>              
+          <ArrowBackIcon onClick={() => navigate(-1)}/>
+        </IconButton>
     </Box>
   )
 }
