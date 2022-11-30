@@ -1,9 +1,6 @@
 import React from 'react'
-import DeleteIcon from '@mui/icons-material/Delete';
-import AddBoxIcon from '@mui/icons-material/AddBox';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Box, IconButton } from '@mui/material';
-import { Link } from 'react-router-dom';
 import { changeFlag } from '../fetch/ApiFetch';
 
 type Todo = {

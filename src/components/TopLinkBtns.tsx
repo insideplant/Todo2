@@ -25,8 +25,8 @@ export default function TopLinkBtns(props: Props) {
               <DeleteIconFilled color={pageTitle=='Trash'? "primary":"inherit"} ></DeleteIconFilled>
           </IconButton>
         </Link>        
-        <IconButton disabled={pageTitle=='Root'? true:false}>              
-          <ArrowBackIcon onClick={() => navigate(-1)}/>
+        <IconButton disabled={pageTitle=='Root'? true:false} onClick={() => navigate(-1)}>              
+          <ArrowBackIcon/>
         </IconButton>
     </Box>
   )
