@@ -6,7 +6,7 @@ import Trash from "./routes/Trash";
 import {
     createBrowserRouter,
   } from "react-router-dom";
-import Draft from "./routes/Draft";
+import Show from "./routes/Show";
 
 export default function useRouter() { 
   return(
@@ -20,8 +20,8 @@ export default function useRouter() {
           element: <New />,
         },
         {
-          path: "draft_todo",
-          element: <Draft />,
+          path: "show_todo",
+          element: <Show />,
         },
         {
           path: "edit_todo",
