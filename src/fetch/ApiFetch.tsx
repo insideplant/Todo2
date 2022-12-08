@@ -29,7 +29,6 @@ export async function getAllTodos():Promise<Todo[]> {
 }
 // 1件取得
 export async function getTodo(id: string | undefined):Promise<Todo> {
-	console.log(id);
 	const response = await fetch(`/TodoManage/Search/?id=${id}`)
 	return await response.json()
 }
