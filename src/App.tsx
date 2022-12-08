@@ -9,10 +9,8 @@ const Main = styled("main")(({ theme }) => ({
 }));
 
 function App() {
-
   // routerの設定
   const routes = useRouter();
-
   return (
     <>
       <header>      
