@@ -1,6 +1,7 @@
 import Button from '@mui/material/Button';
 import { useState,useEffect } from 'react';
 import { changeStatus } from "../../fetch/ApiFetch";
+import{ useDispatch } from "react-redux";
 
 const STATUS = {
   not_started: "NOT STARTED",
@@ -26,20 +27,17 @@ type Todo = {
 
 type Props = {
   status: Status,
-  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>,
   todo: Todo,
-  todos: Todo[]
 }
 
 
 export default function StatusButon(props: Props) {
-  // console.log(props)
-  const {status, setTodos,todo,todos} = props;
+  const {status, todo} = props;
   const [variant, setVariant]= useState<"text" | "outlined" | "contained" | undefined>();
+  const dispatch = useDispatch();
   
   
   useEffect(() => {
-    console.log(status);  
     return () => {
       if(status == STATUS.doing){
         setVariant("text");      
@@ -52,7 +50,8 @@ export default function StatusButon(props: Props) {
   }, [])
 
   function handleClick(id :number,status:Status): void{    
-    const test = changeStatus(id,status)
+    changeStatus(id,status)
+
     if(status === "DOING"){
       status = "DONE";
       setVariant("outlined");
@@ -64,9 +63,11 @@ export default function StatusButon(props: Props) {
       setVariant("text");
     }
 
-    setTodos(
-      todos.map((todo,index)=> (index === id ? Object.assign(todo,{status: status}): todo))
-    );
+    dispatch({
+        type: 'CHANGE_TODOS_STATUS',
+        payload: {id: id, status: status},
+      }
+    )
   }
 
   return (

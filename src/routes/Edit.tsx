@@ -1,16 +1,15 @@
 import { Button, Container, FormControl, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, TextField, Typography } from "@mui/material";
-import TopLinkBtns from "../components/TopLinkBtns";
+import TopLinkBtns from "../components/Button/TopLinkBtns";
 import { useParams, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from "react";
-import { getTodo } from "../fetch/ApiFetch";
-import { TodosState } from "../redux/todosReducer";
 import{ useSelector} from "react-redux";
+import { RootState } from "../redux/configureStore";
+
 
 export default function Edit() {
   const params = useParams();
   const navigate = useNavigate();
-  const todosState= useSelector((state:any) => state.todosReducer.todos);
-  const todoState:Todo = todosState[Number(params.editId)];
+  const todosState= useSelector((state:RootState) => state.todosReducer.todos);
+  const todoState:Todo = todosState[Number(params.editId) -1];
   
   type Todo = {
     id: number;

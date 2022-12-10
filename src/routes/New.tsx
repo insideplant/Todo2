@@ -1,6 +1,6 @@
 import { Button, Container, FormControl, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, TextField, Typography } from "@mui/material";
 import { useState } from "react";
-import TopLinkBtns from "../components/TopLinkBtns";
+import TopLinkBtns from "../components/Button/TopLinkBtns";
 import { createTodo } from "../fetch/ApiFetch";
 
 export default function New() {

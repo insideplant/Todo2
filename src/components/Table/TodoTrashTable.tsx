@@ -1,7 +1,9 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
 import StatusButon from '../Button/StatusButon';
 import PriorityButton from '../Button/PriorityButon';
-import TrashTableRowBtns from '../TrashTableRowBtns';
+import TrashTableRowBtns from '../Button/TrashTableRowBtns';
+import { RootState } from '../../redux/configureStore';
+import{ useSelector } from "react-redux";
 
 type Todo = {
 	id: number;
@@ -15,17 +17,14 @@ type Todo = {
 
 type Props = {
     todos: Todo[],
-    setTodos: React.Dispatch<React.SetStateAction<Todo[]>>
 }
 
 type Status = "NOT STARTED" | "DOING" | "DONE"
 type Priority = "HIGH" | "MIDDLE" | "LOW"
 
 export default function TodoTrashTable(props:Props): JSX.Element{
-    const {todos,setTodos} = props;
-
-
-    const tblrow = todos.reduce((result:Todo[], currentValue:Todo) => {
+    const todosState= useSelector((state:RootState) => state.todosReducer.todos);
+    const tblrow: Todo[] = todosState.reduce((result:Todo[], currentValue:Todo) => {
         if(currentValue.flag == -1){
             result.push(currentValue);
         }
@@ -57,11 +56,11 @@ export default function TodoTrashTable(props:Props): JSX.Element{
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                     <TableCell align="left" sx={{overflow: "hidden",textOverflow: "ellipsis",whiteSpace: "nowrap" }}>{todo.task}</TableCell>
-                    <TableCell align="left" ><StatusButon status= {todo.status} setTodos={setTodos} todo={todo} todos={todos} /></TableCell>
-                    <TableCell align="left"><PriorityButton priority= {todo.priority} setTodos={setTodos} todo={todo} todos={todos} /></TableCell>
+                    <TableCell align="left" ><StatusButon status= {todo.status} todo={todo} /></TableCell>
+                    <TableCell align="left"><PriorityButton priority= {todo.priority} todo={todo}  /></TableCell>
                     <TableCell align="left">{todo.created_at}</TableCell>
                     <TableCell align="left">{todo.updated_at}</TableCell>
-                    <TableCell align="left"><TrashTableRowBtns setTodos={setTodos} todo={todo} todos={todos}/></TableCell>
+                    <TableCell align="left"><TrashTableRowBtns todo={todo} /></TableCell>
                 </TableRow>
                 // }
             ))}
@@ -70,4 +69,3 @@ export default function TodoTrashTable(props:Props): JSX.Element{
     </TableContainer> 
   )
 }
-

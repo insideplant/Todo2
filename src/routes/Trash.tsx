@@ -2,7 +2,7 @@ import { Container, Grid, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import TodoTrashTable from "../components/Table/TodoTrashTable";
 import { getAllTodos } from "../fetch/ApiFetch";
-import TopLinkBtns from "../components/TopLinkBtns";
+import TopLinkBtns from "../components/Button/TopLinkBtns";
 
 export default function Trash() {
   type Todo = {
@@ -23,7 +23,6 @@ export default function Trash() {
   useEffect(() => {
     return () => {
       getAllTodos().then((todos:Todo[]):void=> {
-        console.log(todos);
         setTodos(todos);
       });
     }
@@ -40,7 +39,7 @@ export default function Trash() {
             <TopLinkBtns pageTitle="Trash"/>
           </Grid>
         </Grid>
-        <TodoTrashTable todos = {todos} setTodos={setTodos} />
+        <TodoTrashTable todos = {todos} />
       </Container>
     </>
   );
