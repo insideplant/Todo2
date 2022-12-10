@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button';
-import { FlagAndOpenMode } from 'fs/promises';
 import { useState,useEffect } from 'react';
 import { changePriority } from "../../fetch/ApiFetch";
+import{ useDispatch } from "react-redux";
 
 const PRIORITY = {
   high: "HIGH",
@@ -27,16 +27,14 @@ type Todo = {
 
 type Props = {
   priority: Priority,
-  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>,
   todo: Todo,
-  todos: Todo[]
 }
 
 export default function PriorityButton(props: Props) {
-
-  const {priority, setTodos,todo, todos} = props;
+  const {priority,todo} = props;
   const [color, setColor]= useState<"inherit" | "primary" | "secondary" | "success" | "error" | "info" | "warning" | undefined>();
-  
+  const dispatch = useDispatch();
+
   useEffect(() => {  
     return () => {
       if(priority == PRIORITY.high){
@@ -50,7 +48,7 @@ export default function PriorityButton(props: Props) {
   }, [handlePriorityClick])
 
   function handlePriorityClick(id :number,priority:Priority): void{
-    const test = changePriority(id,priority)
+    changePriority(id,priority)
     if(priority === "HIGH"){
       priority = "MIDDLE";
       setColor("inherit");
@@ -62,10 +60,11 @@ export default function PriorityButton(props: Props) {
       setColor("error");
     }
 
-    setTodos(
-      todos.map((todo,index)=> (index === id ? Object.assign(todo,{priority: priority}): todo))
-    );
-  }
+    dispatch({
+      type: 'CHANGE_TODOS_PRIORITY',
+      payload: {id: id, priority: priority},
+    }
+  )}
 
   return (
     <Button variant="text" color={color} onClick={() => handlePriorityClick(todo.id -1,priority)} sx={{ width: 120, padding: 1 }}>{priority}</Button>
