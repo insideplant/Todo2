@@ -9,8 +9,6 @@ import '@fontsource/roboto/700.css';
 import { Typography } from '@mui/material';
 import TopLinkBtns from "../components/TopLinkBtns";
 import{ useSelector, useDispatch } from "react-redux";
-import store from "../redux/store";
-import { TodosState } from "../redux/todosReducer";
 
 export default function Root() { 
   const todos2= useSelector((state:any) => state.todosReducer.todos);
@@ -47,7 +45,6 @@ export default function Root() {
       })
       
     });
-    console.log(store.getState());
   },[dispatch]);
   
 

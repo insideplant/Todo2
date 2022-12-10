@@ -7,12 +7,10 @@ import { TodosState } from "../redux/todosReducer";
 import{ useSelector} from "react-redux";
 
 export default function Edit() {
-
   const params = useParams();
-  const [todo,setTodo] = useState<Todo>({id: 4, task: '感謝の正拳突き',detail: null, status: 'DOING', priority: 'LOW',created_at: "", updated_at: "", flag: 0});
   const navigate = useNavigate();
-  const todos1= useSelector((state:any) => state.todosReducer.todos);
-  const todos2:Todo = todos1[Number(params.editId)];
+  const todosState= useSelector((state:any) => state.todosReducer.todos);
+  const todoState:Todo = todosState[Number(params.editId)];
   
   type Todo = {
     id: number;
@@ -27,16 +25,6 @@ export default function Edit() {
 
   type Status = "NOT STARTED" | "DOING" | "DONE"
   type Priority = "HIGH" | "MIDDLE" | "LOW"
-
-  useEffect(() => {
-    getTodo(params.editId).then((todo:Todo):void=> {
-      setTodo(todo);
-    });
-  },[])
-
-  // useEffect(() => {
-  //   const todo2:Todo = todos2[Number(params.editId)];
-  // },[])
 
 
   return (
@@ -58,7 +46,7 @@ export default function Edit() {
             required id="outlined-required" 
             label="Title" 
             margin="normal"
-            value={todos2.task}
+            value={todoState.task}
             // onChange={handleTaskChange}
             />
 
@@ -70,7 +58,7 @@ export default function Edit() {
             rows={10}
             sx={{ display: "flex" }}
             margin="normal"
-            value={todos2.detail}
+            value={todoState.detail}
             // onChange={handleDetailChange}
             />
           </Grid>          
@@ -86,7 +74,7 @@ export default function Edit() {
                       <RadioGroup
                         aria-labelledby="demo-controlled-radio-buttons-group"
                         name="controlled-radio-buttons-group"
-                        value={todos2.status}
+                        value={todoState.status}
                         // onChange={handleStatusSet}
                         >
                         <FormControlLabel value="NOT STARTED" control={<Radio />} label="NOT STARTED" />
@@ -101,7 +89,7 @@ export default function Edit() {
                       <RadioGroup
                         aria-labelledby="demo-controlled-radio-buttons-group"
                         name="controlled-radio-buttons-group"
-                        value={todo.priority}
+                        value={todoState.priority}
                         // onChange={handlePrioritySet}
                         >
                         <FormControlLabel value="HIGH" control={<Radio />} label="HIGH" />
