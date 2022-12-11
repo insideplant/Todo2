@@ -1,6 +1,4 @@
-import React from 'react'
 import DeleteIcon from '@mui/icons-material/Delete';
-import AddBoxIcon from '@mui/icons-material/AddBox';
 import EditIcon from '@mui/icons-material/Edit';
 import { Box, IconButton } from '@mui/material';
 import { Link } from 'react-router-dom';
@@ -29,7 +27,7 @@ export default function TableRowBtns(props: Props) {
   const {todo} = props;
   const dispatch = useDispatch(); 
 
-  function handleClick(id: number, flag: number){
+  function handleClickFlag(id: number, flag: number){    
     changeFlag(id,~flag);
     dispatch({
       type: 'CHANGE_TODOS_FLAG',
@@ -44,7 +42,7 @@ export default function TableRowBtns(props: Props) {
               <EditIcon ></EditIcon>
           </IconButton>
         </Link>        
-        <IconButton onClick={() => handleClick(todo.id -1,todo.flag)}>
+        <IconButton onClick={() => handleClickFlag(todo.id,todo.flag)}>
             <DeleteIcon></DeleteIcon>
         </IconButton>        
     </Box>

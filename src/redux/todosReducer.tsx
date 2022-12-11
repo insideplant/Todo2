@@ -20,17 +20,22 @@ state:{todos: Todo[] } = {
         case 'GET_ALL_TODO_DATA':
             return { ...state, todos: action.payload};
         case 'CHANGE_TODOS_STATUS':
-             const resultS:Todo[] = state.todos.map((todo,index)=> (index === action.payload.id ? 
+             const resultS:Todo[] = state.todos.map((todo)=> (todo.id === action.payload.id ? 
                 Object.assign(todo,{status: action.payload.status}): todo));
             return {todos: resultS }
         case 'CHANGE_TODOS_PRIORITY':
-             const resultP:Todo[] = state.todos.map((todo,index)=> (index === action.payload.id ? 
+             const resultP:Todo[] = state.todos.map((todo)=> (todo.id === action.payload.id ? 
                 Object.assign(todo,{priority: action.payload.priority}): todo));
             return {todos: resultP }
         case 'CHANGE_TODOS_FLAG':
-             const resultF:Todo[] = state.todos.map((todo,index)=> (index === action.payload.id ? 
+             const resultF:Todo[] = state.todos.map((todo)=> (todo.id === action.payload.id ? 
                 Object.assign(todo,{flag: ~action.payload.flag}): todo));
             return {todos: resultF }
+        case 'DELETE_TODO':
+             const resultD:Todo[] = state.todos.filter((todo)=> {
+                if(todo.id !== action.payload.id){ return todo;}
+             })
+            return {todos: resultD }
         default:
             return state;
     }

@@ -71,6 +71,6 @@ export default function StatusButon(props: Props) {
   }
 
   return (
-    <Button variant={variant} onClick={() => handleClick(todo.id -1,status)} sx={{ width: 120, padding: 1 }}>{status}</Button>
+    <Button variant={variant} onClick={() => handleClick(todo.id,status)} sx={{ width: 120, padding: 1 }}>{status}</Button>
   )
 }

@@ -1,5 +1,3 @@
-import { Params } from "react-router-dom";
-
 type Todo = {
 	id: number;
 	task: String;
@@ -36,27 +34,25 @@ export async function getTodo(id: string | undefined):Promise<Todo> {
 // status更新
 export async function changeStatus(id:number, status:Status):Promise<Todo[]> {
 	const url = `/TodoManage/setStatus`;
-	const params = {method: "PUT", body: JSON.stringify({id: id + 1, status: status})}
+	const params = {method: "PUT", body: JSON.stringify({id: id, status: status})}
 	const response = await fetch(url,params)
 	return await response.json()
 }
 
 // priority更新
 export async function changePriority(id:number, priority:Priority):Promise<Todo[]> {
-	console.log(priority)
 	const url = `/TodoManage/setPriority`;
-	const params = {method: "PUT", body: JSON.stringify({id: id + 1, priority: priority})}
+	const params = {method: "PUT", body: JSON.stringify({id: id, priority: priority})}
 	const response = await fetch(url,params)
 	return await response.json()
 }
 
 // flag更新
-export async function changeFlag(id:number, flag:number):Promise<Todo[]> {
-	console.log(flag)
+export async function changeFlag(id:number, flag:number):Promise<void> {
 	const url = `/TodoManage/setFlag`;
-	const params = {method: "PUT", body: JSON.stringify({id: id + 1, flag: flag})}
-	const response = await fetch(url,params)
-	return await response.json()
+	const params = {method: "PUT", body: JSON.stringify({id: id, flag: flag})}
+	await fetch(url,params)
+	// return await response.json()
 }
 
 // CREATE TODO
@@ -65,4 +61,11 @@ export async function createTodo(todo:NewTodo):Promise<Todo[]> {
 	const params = {method: "POST", body: JSON.stringify(todo)}
 	const response = await fetch(url,params)
 	return await response.json()
+}
+
+// DELETE TODO
+export async function deleteTodo(id:Number):Promise<void> {
+	const url = `/TodoManage/delete/${id}`;
+	const params = {method: "DELETE"}
+	await fetch(url,params)
 }
