@@ -67,6 +67,6 @@ export default function PriorityButton(props: Props) {
   )}
 
   return (
-    <Button variant="text" color={color} onClick={() => handlePriorityClick(todo.id -1,priority)} sx={{ width: 120, padding: 1 }}>{priority}</Button>
+    <Button variant="text" color={color} onClick={() => handlePriorityClick(todo.id,priority)} sx={{ width: 120, padding: 1 }}>{priority}</Button>
   )
 }

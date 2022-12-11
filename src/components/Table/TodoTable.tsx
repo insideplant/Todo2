@@ -15,11 +15,6 @@ type Todo = {
     flag: number;
 };
 
-type Props = {
-    todos: Todo[],
-    setTodos: React.Dispatch<React.SetStateAction<Todo[]>>
-}
-
 type Status = "NOT STARTED" | "DOING" | "DONE"
 type Priority = "HIGH" | "MIDDLE" | "LOW"
 

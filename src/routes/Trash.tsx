@@ -1,33 +1,9 @@
 import { Container, Grid, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
 import TodoTrashTable from "../components/Table/TodoTrashTable";
-import { getAllTodos } from "../fetch/ApiFetch";
 import TopLinkBtns from "../components/Button/TopLinkBtns";
 
 export default function Trash() {
-  type Todo = {
-    id: number;
-    task: String;
-    status: Status;
-    priority:  Priority;
-    created_at:  String;
-    updated_at:  String;
-    flag: number;
-  };
-
-  type Status = "NOT STARTED" | "DOING" | "DONE"
-  type Priority = "HIGH" | "MIDDLE" | "LOW"
-
-  const [todos, setTodos] = useState<Todo[]>([])
-
-  useEffect(() => {
-    return () => {
-      getAllTodos().then((todos:Todo[]):void=> {
-        setTodos(todos);
-      });
-    }
-  },[])
-
+ 
   return (
     <>
       <Container maxWidth="md">
@@ -39,7 +15,7 @@ export default function Trash() {
             <TopLinkBtns pageTitle="Trash"/>
           </Grid>
         </Grid>
-        <TodoTrashTable todos = {todos} />
+        <TodoTrashTable />
       </Container>
     </>
   );
