@@ -1,7 +1,6 @@
 import { Box, Button, Container, FormControl, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import { createTodo } from "../fetch/ApiFetch";
-import { red } from '@mui/material/colors';
 
 export default function Show() {
 

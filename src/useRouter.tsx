@@ -2,11 +2,8 @@ import Edit from "./routes/Edit";
 import New from "./routes/New";
 import Root from "./routes/Root";
 import Trash from "./routes/Trash";
-
-import {
-    createBrowserRouter,
-  } from "react-router-dom";
 import Show from "./routes/Show";
+import { createBrowserRouter } from "react-router-dom";
 
 export default function useRouter() { 
   return(
@@ -22,6 +19,11 @@ export default function useRouter() {
         {
           path: "show_todo",
           element: <Show />,
+          children: [
+            {
+              path: ":showId",
+            },
+          ],
         },
         {
           path: "edit_todo",
