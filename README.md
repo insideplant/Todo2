@@ -1,5 +1,5 @@
 
-#H3■レビューして欲しいポイント（不明点）
+### ■レビューして欲しいポイント（不明点）
 
 ・PriorityButton.tsx,StatusButton.tsx<br>
 　handlePriorityClick,useEffectの箇所が冗長であり、使用変更に弱い設計となっている。<br>
