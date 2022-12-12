@@ -1,7 +1,7 @@
 ### ■環境
-　front：React　当ブランチ
-　back ：Java　https://github.com/insideplant/Todo2-BackEnd
-　DB   ：Oracle DB
+　front：React　当ブランチ<br>
+　back ：Java　https://github.com/insideplant/Todo2-BackEnd<br>
+　DB   ：Oracle DB<br>
 
 ### ■レビューして欲しいポイント（不明点）
 
