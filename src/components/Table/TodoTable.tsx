@@ -4,6 +4,7 @@ import PriorityButton from '../Button/PriorityButon';
 import TableRowBtns from '../Button/TableRowBtns';
 import { RootState } from '../../redux/configureStore';
 import{ useSelector } from "react-redux";
+import { Link } from 'react-router-dom';
 
 type Todo = {
 	id: number;
@@ -51,7 +52,11 @@ export default function TodoTable(): JSX.Element{
                 key={todo.id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
-                    <TableCell align="left" sx={{overflow: "hidden",textOverflow: "ellipsis",whiteSpace: "nowrap" }}>{todo.task}</TableCell>
+                    <TableCell align="left" sx={{overflow: "hidden",textOverflow: "ellipsis",whiteSpace: "nowrap" }}>
+                        <Link to={`show_todo/${todo.id}`}  style={{textDecoration: "none"}}>
+                            {todo.task}
+                        </Link>   
+                    </TableCell>
                     <TableCell align="left" ><StatusButon status= {todo.status}  todo={todo} /></TableCell>
                     <TableCell align="left"><PriorityButton priority= {todo.priority} todo={todo} /></TableCell>
                     <TableCell align="left">{todo.created_at}</TableCell>
