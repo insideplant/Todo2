@@ -53,7 +53,7 @@ export default function TodoTable(): JSX.Element{
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                     <TableCell align="left" sx={{overflow: "hidden",textOverflow: "ellipsis",whiteSpace: "nowrap" }}>
-                        <Link to={`show_todo/${todo.id}`}>
+                        <Link to={`show_todo/${todo.id}`}  style={{textDecoration: "none"}}>
                             {todo.task}
                         </Link>   
                     </TableCell>
