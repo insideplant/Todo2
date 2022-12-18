@@ -21,11 +21,15 @@ export default function Show() {
 
   const params = useParams();
   const todosState= useSelector((state:RootState) => state.todosReducer.todos);
-  const todo:Todo = todosState.find((todo:Todo)=> {
-    if(todo.id === Number(params.showId)){
-      return todo;
+  const todo:Todo = getTodo(todosState,Number(params.editId));
+ 
+  function getTodo(todos: Array<Todo>, id: number){
+    const target = todos.find((todo:Todo)=> todo.id === id);
+    if(target == null){
+      throw new Error('idは存在しなければなりません');
     }
-  })
+    return target;
+  }
 
   return (
     <>
