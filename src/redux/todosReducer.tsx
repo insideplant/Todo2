@@ -1,6 +1,7 @@
   type Todo = {
     id: number;
     task: String;
+    detail: String;
     status: Status;
     priority:  Priority;
     created_at:  String;
@@ -15,7 +16,7 @@ const todosReducer = (
 state:{todos: Todo[] } = {
     todos: []
 }
-, action: any) => {
+, action: any):{todos: Todo[]} => {
     switch (action.type){
         case 'GET_ALL_TODO_DATA':
             return { ...state, todos: action.payload};
@@ -31,6 +32,15 @@ state:{todos: Todo[] } = {
              const resultF:Todo[] = state.todos.map((todo)=> (todo.id === action.payload.id ? 
                 Object.assign(todo,{flag: ~action.payload.flag}): todo));
             return {todos: resultF }
+        case 'UPDATE_TODO':
+             const resultU:Todo[] = state.todos.map((todo)=> (todo.id === action.payload.id ? 
+                Object.assign(todo,{
+                    task: action.payload.task,
+                    detail: action.payload.detail,
+                    status: action.payload.status,
+                    priority: action.payload.priority
+                    }): todo));
+            return {todos: resultU}
         case 'DELETE_TODO':
              const resultD:Todo[] = state.todos.filter((todo)=> {
                 if(todo.id !== action.payload.id){ return todo;}

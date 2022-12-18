@@ -14,7 +14,13 @@ type NewTodo = {
     detail: String;
     status: String;
     priority:  String;
-    created_at:  String | null;
+};
+type FormTodo = {
+	id: Number;
+    task: String;
+    detail: String;
+    status: String;
+    priority:  String;
 };
 
 type Status = "NOT STARTED" | "DOING" | "DONE"
@@ -61,6 +67,13 @@ export async function createTodo(todo:NewTodo):Promise<Todo[]> {
 	const params = {method: "POST", body: JSON.stringify(todo)}
 	const response = await fetch(url,params)
 	return await response.json()
+}
+
+// UPDATE TODO
+export async function updateTodo(todo:FormTodo):Promise<Response> {
+	const url = `/TodoManage/update`;
+	const params = {method: "POST", body: JSON.stringify(todo)}
+	return await fetch(url,params)
 }
 
 // DELETE TODO
