@@ -21,7 +21,7 @@ export default function Show() {
 
   const params = useParams();
   const todosState= useSelector((state:RootState) => state.todosReducer.todos);
-  const todo:Todo = getTodo(todosState,Number(params.editId));
+  const todo:Todo = getTodo(todosState,Number(params.showId));
  
   function getTodo(todos: Array<Todo>, id: number){
     const target = todos.find((todo:Todo)=> todo.id === id);
