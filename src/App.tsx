@@ -22,7 +22,6 @@ function App() {
         type: 'GET_ALL_TODO_DATA',
         payload: data,
       })
-      
     });
   },[dispatch]);
   

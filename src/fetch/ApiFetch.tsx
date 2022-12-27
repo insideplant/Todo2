@@ -62,11 +62,10 @@ export async function changeFlag(id:number, flag:number):Promise<void> {
 }
 
 // CREATE TODO
-export async function createTodo(todo:NewTodo):Promise<Todo[]> {
+export async function createTodo(todo:NewTodo):Promise<Response> {
 	const url = `/TodoManage/create`;
 	const params = {method: "POST", body: JSON.stringify(todo)}
-	const response = await fetch(url,params)
-	return await response.json()
+	return  await fetch(url,params)
 }
 
 // UPDATE TODO
