@@ -12,8 +12,8 @@ type Todo = {
 	updated_at:  String;
     flag: number;
 };
-
-
+            
+    
 type Status = "NOT STARTED" | "DOING" | "DONE"
 type Priority = "HIGH" | "MIDDLE" | "LOW"
 
@@ -21,7 +21,7 @@ export default function TodoTrashTable(): JSX.Element{
     const todosState= useSelector((state:RootState) => state.todosReducer.todos);
     const tblrow: Todo[] = todosState.reduce((result:Todo[], currentValue:Todo) => {
         if(currentValue.flag == -1){
-            result.push(currentValue);
+           result.push(currentValue);
         }
         return result
     },[])
