@@ -57,5 +57,8 @@
   },
   "engines": {
     "npm": "please_use_yarn_instead"
+  },
+  "volta": {
+    "node": "16.19.0"
   }
 }

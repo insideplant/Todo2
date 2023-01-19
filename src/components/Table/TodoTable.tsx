@@ -6,15 +6,6 @@ import { RootState } from '../../redux/configureStore';
 import{ useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 
-type Todo = {
-	id: number;
-	task: String;
-	status: Status;
-	priority:  Priority;
-	created_at:  String;
-	updated_at:  String;
-    flag: number;
-};
 
 type Status = "NOT STARTED" | "DOING" | "DONE"
 type Priority = "HIGH" | "MIDDLE" | "LOW"
@@ -23,10 +14,10 @@ export default function TodoTable(): JSX.Element{
     const todosState= useSelector((state:RootState) => state.todosReducer.todos);
 
     const tblrow:Todo[] = todosState.reduce((result:Todo[], currentValue:Todo) => {
-        if(currentValue.flag == 0){
-            result.push(currentValue);
-        }
-        return result
+      if(currentValue.flag == 0){
+          result.push(currentValue);
+      }
+      return result
     },[])
     
   return (

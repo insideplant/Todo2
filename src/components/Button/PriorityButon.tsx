@@ -45,7 +45,7 @@ export default function PriorityButton(props: Props) {
         setColor("primary");
       }
     }
-  }, [handlePriorityClick])
+  }, [])
 
   function handlePriorityClick(id :number,priority:Priority): void{
     changePriority(id,priority)
